@@ -40,7 +40,7 @@ class AMQPLogstashHandler(SocketHandler, object):
     def __init__(self, host='localhost', port=5672, username='guest',
                  password='guest', exchange='logstash', exchange_type='fanout',
                  virtual_host='/', message_type='logstash', tags=None,
-                 durable=False,
+                 durable=False, key='',
                  version=0, extra_fields=True, fqdn=False, facility=None):
 
 
@@ -53,7 +53,7 @@ class AMQPLogstashHandler(SocketHandler, object):
         self.exchange = exchange
         self.exchange_is_durable = durable
         self.virtual_host = virtual_host
-        self.routing_key = ''
+        self.routing_key = key
 
         SocketHandler.__init__(self, host, port)
 
